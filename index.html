@@ -1,86 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <!-- Define la codificación de caracteres y la configuración responsiva de la página -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Título que aparece en la pestaña del navegador -->
   <title>Carrera de Operaciones Matemáticas</title>
-  <!-- Enlaza el archivo de estilos CSS para dar formato visual al juego -->
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- Pantalla inicial del juego: muestra el título, las reglas y el botón para comenzar -->
+  <!-- 🏁 PANTALLA DE INICIO -->
   <div id="startScreen">
     <h1>🏁 Carrera de Operaciones Matemáticas</h1>
-
-    <!-- Contenedor con las reglas del juego explicadas de forma clara y visual -->
     <div class="rules">
       <p><strong>🎯 OBJETIVO:</strong> Llegar a la meta en 5 aciertos.</p>
       <p><strong>⏱️ TIEMPO:</strong> Tienes 10 segundos por pregunta.</p>
-      <p>
-        <strong>❤️ VIDAS:</strong> Comienzas con 3 vidas. Pierdes una al
-        equivocarte o agotar el tiempo.
-      </p>
-      <p>
-        <strong>🚗 MOVIMIENTO:</strong> Acertar = avanzas. Fallar =
-        retrocedes.
-      </p>
+      <p><strong>❤️ VIDAS:</strong> Comienzas con 3 vidas. Pierdes una al equivocarte o agotar el tiempo.</p>
+      <p><strong>🚗 MOVIMIENTO:</strong> Acertar = avanzas. Fallar = retrocedes.</p>
       <p><strong>🏆 RÉCORD:</strong> Tu mejor puntuación se guarda.</p>
     </div>
-
-    <!-- Botón que inicia la secuencia del juego al hacer clic -->
     <button id="startBtn">¡Iniciar carrera!</button>
   </div>
 
-  <!-- Pantalla de cuenta regresiva que se muestra antes de la primera pregunta -->
+  <!-- 🔢 CUENTA REGRESIVA -->
   <div id="countdown">
     <div id="countdownText">3</div>
   </div>
 
-  <!-- Pantalla principal del juego: contiene la operación, opciones, pista y estado del jugador -->
+  <!-- 🎮 PANTALLA DEL JUEGO -->
   <div id="gameScreen" style="display: none">
-    <!-- Panel superior con información en tiempo real: vidas, temporizador y récord -->
     <div id="gameInfo">
       <div id="vidas">Vidas: ❤️❤️❤️</div>
       <div id="timer">Tiempo: 10s</div>
       <div id="record">Récord: 0</div>
     </div>
-
-    <!-- Aquí se mostrará la operación matemática generada (ej: "4 + 5 = ?") -->
     <div id="problem"></div>
-
-    <!-- Contenedor para los botones de respuesta (opciones múltiples) -->
     <div id="options"></div>
-
-    <!-- Representación visual de la pista de carreras con el coche del jugador y la meta -->
     <div id="raceTrack">
       <div id="playerCar">🚗</div>
       <div id="finishLine"></div>
     </div>
-
-    <!-- Mensaje de retroalimentación que aparece tras responder (ej: "¡Correcto!") -->
     <div id="status"></div>
-
-    <!-- Espacio reservado para mostrar pistas o consejos durante el juego -->
     <div id="hint"></div>
-
-    <!-- Botón para reiniciar el juego después de ganar o perder (inicialmente oculto) -->
-    <button id="restartBtn" style="display: none">Jugar de nuevo</button>
+    <!-- Este botón ya NO se usa (se reemplaza por winScreen) -->
+    <!-- <button id="restartBtn" style="display: none">Jugar de nuevo</button> -->
   </div>
 
-  <!-- Pantalla que se muestra cuando el jugador pierde todas sus vidas -->
-  <!-- 💀 PANTALLA DE GAME OVER CON IMAGEN PERSONALIZADA -->
-<div id="gameOverScreen">
-  <img id="gameOverImage" src="img/ff766590-a1ac-407c-9891-9751b9bdcd3e (1).webp" alt="Game Over" />
-  <div id="gameOverText">GAME OVER</div>
-  <button id="gameOverBtn">Jugar de nuevo</button>
-</div>
+  <!-- 💀 PANTALLA DE GAME OVER -->
+  <div id="gameOverScreen" style="display: none;">
+    <img id="gameOverImage" src="img/94868637-95e2-47d5-bb4f-b44812f70c45.webp" alt="Game Over" />
+    <div id="gameOverText">GAME OVER</div>
+    <button id="gameOverBtn">Jugar de nuevo</button>
+  </div>
 
-  <!-- Enlaza el archivo JavaScript que contiene toda la lógica del juego -->
+  <!-- 🏆 PANTALLA DE VICTORIA -->
+  <div id="winScreen" style="display: none;">
+    <img id="winImage" src="img/d12f87a6-1734-4871-8edb-e6346f4ecab2.webp" alt="¡Ganaste!" />
+    <div id="winText">¡GANASTE! 🏆</div>
+    <button id="winBtn">Jugar de nuevo</button>
+  </div>
+
   <script src="java.js"></script>
 </body>
-
 </html>
