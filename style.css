@@ -333,6 +333,57 @@ p {
   max-width: 600px;
 }
 
+/* 🏆 PANTALLA DE VICTORIA */
+#winScreen {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  flex-direction: column;
+  color: #f1c40f;
+  /* Amarillo dorado */
+}
+
+#winImage {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.6);
+}
+
+#winText {
+  font-size: 5em;
+  font-weight: bold;
+  text-shadow: 0 0 20px #f1c40f;
+  margin-bottom: 30px;
+  animation: pulse 1.5s infinite;
+}
+
+#winBtn {
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 40px;
+  font-size: 1.6em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+#winBtn:hover {
+  background: #27ae60;
+  transform: scale(1.05);
+}
+
 /* 
         📱 DISEÑO RESPONSIVO PARA MÓVILES
         - Ajusta tamaños de fuente y elementos en pantallas pequeñas.
