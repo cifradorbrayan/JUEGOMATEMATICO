@@ -385,6 +385,32 @@ p {
 }
 
 /* 
+  🖼️ ESTILO PARA LA IMAGEN DINÁMICA DE LA PREGUNTA
+  - Contenedor que muestra las imágenes 1.webp a 9.webp
+  - Centrado, con tamaño controlado y sombra suave
+*/
+#questionImage {
+  min-height: 120px;
+  /* Reserva espacio para evitar saltos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+#questionImage img {
+  max-width: 120px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+#questionImage img:hover {
+  transform: scale(1.05);
+}
+
+/* 
         📱 DISEÑO RESPONSIVO PARA MÓVILES
         - Ajusta tamaños de fuente y elementos en pantallas pequeñas.
         - Mejora la usabilidad en tablets y celulares.
