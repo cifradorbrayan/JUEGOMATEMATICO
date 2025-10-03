@@ -20,7 +20,7 @@
     <button id="startBtn">¡Iniciar carrera!</button>
   </div>
 
-  <!-- 🔢 CUENTA REGRESIVA -->
+  <!-- 🔢 CUENTA REGRESIVA (3... 2... 1... ¡GO!) -->
   <div id="countdown">
     <div id="countdownText">3</div>
   </div>
@@ -32,16 +32,25 @@
       <div id="timer">Tiempo: 10s</div>
       <div id="record">Récord: 0</div>
     </div>
+    
+    <!-- Pregunta matemática -->
     <div id="problem"></div>
+    
+    <!-- ✅ CONTENEDOR PARA LAS IMÁGENES DINÁMICAS (1.webp a 9.webp) -->
+    <div id="questionImage"></div>
+    
+    <!-- Opciones de respuesta -->
     <div id="options"></div>
+
+    <!-- Pista de carreras -->
     <div id="raceTrack">
       <div id="playerCar">🚗</div>
       <div id="finishLine"></div>
     </div>
+
+    <!-- Mensajes de estado y pistas -->
     <div id="status"></div>
     <div id="hint"></div>
-    <!-- Este botón ya NO se usa (se reemplaza por winScreen) -->
-    <!-- <button id="restartBtn" style="display: none">Jugar de nuevo</button> -->
   </div>
 
   <!-- 💀 PANTALLA DE GAME OVER -->
@@ -58,6 +67,7 @@
     <button id="winBtn">Jugar de nuevo</button>
   </div>
 
+  <!-- Enlaza la lógica del juego -->
   <script src="java.js"></script>
 </body>
 </html>
