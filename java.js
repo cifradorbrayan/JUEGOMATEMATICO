@@ -5,6 +5,7 @@
   - Uso de localStorage para guardar el récord del jugador.
   - Sonidos generados con Web Audio API (sin archivos externos).
   - ✅ NUEVO: Pantallas completas de VICTORIA y DERROTA con imágenes personalizadas.
+  - ✅ NUEVO: 9 imágenes dinámicas (1.webp a 9.webp) según el contexto.
 */
 
 let score = 0; // Puntuación actual (posiciones avanzadas)
@@ -26,6 +27,17 @@ const operations = ["+", "-", "*", "/"];
 // Genera un número entero aleatorio entre min y max (inclusive)
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/*
+  🖼️ FUNCIÓN PARA MOSTRAR IMAGEN DINÁMICA (1.webp a 9.webp)
+  - imageNumber: número del 1 al 9
+  - Las imágenes deben estar en la carpeta "img/"
+*/
+function showImage(imageNumber) {
+  const src = `img/${imageNumber}.webp`;
+  document.getElementById("questionImage").innerHTML = 
+    `<img src="${src}" alt="Imagen ${imageNumber}" style="width:100px; height:auto; margin:15px 0; border-radius:8px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">`;
 }
 
 /*
@@ -59,6 +71,7 @@ function playSound(type) {
   - Elige una operación aleatoria.
   - Genera números según la operación para evitar resultados negativos o decimales (excepto en división exacta).
   - Guarda los valores para usarlos en pistas y verificación.
+  - ✅ Muestra la imagen correspondiente a la operación (1 a 4).
 */
 function generateProblem() {
   const op = operations[getRandomInt(0, 3)];
@@ -68,18 +81,22 @@ function generateProblem() {
     a = getRandomInt(1, 50);
     b = getRandomInt(1, 50);
     result = a + b;
+    showImage(1); // Imagen para suma
   } else if (op === "-") {
     a = getRandomInt(10, 100);
     b = getRandomInt(1, a - 1);
     result = a - b;
+    showImage(2); // Imagen para resta
   } else if (op === "*") {
     a = getRandomInt(1, 12);
     b = getRandomInt(1, 12);
     result = a * b;
+    showImage(3); // Imagen para multiplicación
   } else if (op === "/") {
     b = getRandomInt(1, 12);
     result = getRandomInt(1, 12);
     a = b * result; // Asegura división exacta
+    showImage(4); // Imagen para división
   }
 
   currentAnswer = result;
@@ -150,6 +167,7 @@ function startTimer() {
 
 // Maneja el caso de tiempo agotado
 function handleTimeout() {
+  showImage(7); // ✅ Imagen 7: tiempo agotado
   document.getElementById("hint").textContent = "";
   document.getElementById("status").textContent =
     "¡Tiempo agotado! ⏳ Retrocedes.";
@@ -182,6 +200,7 @@ function processWrongAnswer() {
     pista = `${currentA} ÷ ${currentB} = ${currentA / currentB}`;
 
   document.getElementById("hint").textContent = `💡 Pista: ${pista}`;
+  showImage(8); // ✅ Imagen 8: pista educativa
 
   if (vidas <= 0) {
     // ✅ Mostrar pantalla de GAME OVER (con imagen)
@@ -208,6 +227,7 @@ function checkAnswer(selected) {
 
   if (selected === currentAnswer) {
     playSound("correct");
+    showImage(5); // ✅ Imagen 5: respuesta correcta
     score++;
     document.getElementById("status").textContent = "¡Correcto! 🎉";
     moveCar();
@@ -233,6 +253,7 @@ function checkAnswer(selected) {
       startRound();
     }, 800);
   } else {
+    showImage(6); // ✅ Imagen 6: respuesta incorrecta
     document.getElementById("status").textContent =
       "Incorrecto. 😕 ¡Tu carrito retrocedió!";
     processWrongAnswer();
@@ -265,6 +286,8 @@ function startRound() {
   document.getElementById("status").textContent = "";
   document.getElementById("hint").textContent = "";
   startTimer();
+  // Opcional: mostrar imagen neutra al iniciar (descomenta si lo deseas)
+  // showImage(9);
 }
 
 /*
@@ -314,7 +337,10 @@ function startGame() {
 // Eventos de los botones
 document.getElementById("startBtn").onclick = startGame;
 document.getElementById("gameOverBtn").onclick = startGame;
-document.getElementById("winBtn").onclick = startGame; // ✅ Nuevo: botón de victoria
+document.getElementById("winBtn").onclick = startGame;
 
 // Mostrar récord al cargar la página
 document.getElementById("record").textContent = `Récord: ${maxScore}`;
+
+// ✅ Mostrar imagen neutra al cargar la página (opcional)
+// showImage(9);
